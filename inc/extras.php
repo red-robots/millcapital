@@ -127,7 +127,7 @@ function get_instagram_setup() {
 }
 
 function get_social_media() {
-    $options = get_field("social_media_links","option");
+    $options = get_field("social_media","option");
     $icons = social_icons();
     $list = array();
     if($options) {
@@ -152,12 +152,12 @@ function get_social_media() {
 
 function social_icons() {
     $social_types = array(
-        'facebook'  => 'fa fa-facebook',
-        'twitter'   => 'fab fa-twitter',
-        'linkedin'  => 'fa fa-linkedin',
-        'instagram' => 'fab fa-instagram',
-        'youtube'   => 'fab fa-youtube',
-        'vimeo'     => 'fab fa-vimeo',
+        'facebook'  => 'fa fa-facebook-square',
+        'twitter'   => 'fab fa-twitter-square',
+        'linkedin'  => 'fa fa-linkedin-square',
+        'instagram' => 'fab fa-instagram-square',
+        'youtube'   => 'fab fa-youtube-square',
+        'vimeo'     => 'fab fa-vimeo-square',
     );
     return $social_types;
 }

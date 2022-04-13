@@ -33,11 +33,12 @@ get_header();
               ?>
               <div class="block">
                 <a href="<?php echo $pagelink ?>" target="<?php echo $target ?>">
-                  <span class="image"<?php echo $style ?>>
+                  <span class="image">
+                    <span class="bg"<?php echo $style ?>></span>
                     <img src="<?php echo THEMEURI ?>/assets/images/rectangle.png" alt="" aria-hidden="true">
                   </span>
                   <?php if ($linkTitle) { ?>
-                  <span class="title"><?php echo $linkTitle ?></span>
+                  <span class="title"><span><?php echo $linkTitle ?></span></span>
                   <?php } ?>
                 </a>
               </div>

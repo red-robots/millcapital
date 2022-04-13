@@ -35,9 +35,7 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 </script>
 <?php wp_head(); ?>
 </head>
-<?php 
-$topNavs = get_field("topNavs","option"); 
-?>
+<?php $topNavs = get_field("topNavs","option"); ?>
 <body <?php body_class();?>>
 <div id="page" class="site cf">
 	<div id="overlay"></div>
