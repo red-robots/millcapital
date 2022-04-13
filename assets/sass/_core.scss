@@ -1,0 +1,425 @@
+div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
+	overflow-wrap: normal;
+    word-wrap: normal;
+    -ms-word-break: normal;
+    word-break: normal;
+    word-break: normal;
+    -ms-hyphens: none;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    hyphens: none;
+    page-break-inside: avoid;
+}
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+pre {
+	font-family: $font_pre;
+	font-size: 13px;
+	line-height: 1.4;
+	color: #000;
+	display: block;
+	position: relative;
+	z-index: 1000;
+	border: 1px solid #FFF;
+	margin: 5vw;
+	padding: 20px;
+}
+body {
+	font-family: $font_primary;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: $color_text_main;
+}
+section, div {
+	&:focus {
+		outline: 0;
+	}
+}
+a,input,button,select,textarea {
+	transition: all ease .3s;
+}
+a {
+	color: $blue;
+	text-decoration: underline;
+	&:hover {
+    color: tint($blue,20%);
+	}
+}
+.cf:before, .cf:after {
+    content: " "; 
+    display: table; 
+}
+.cf:after { clear: both; }
+.cf { *zoom: 1; }
+.text-center {text-align:center;}
+.fw,.full {width:100%!important;float:left !important}
+.nomtop {margin-top:0!important;}
+.nombottom {margin-bottom:0!important;}
+/* Text meant only for screen readers. */
+.sr {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	&:focus {
+		background-color: #333;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		clip: auto !important;
+		color: #FFF;
+		display: block;
+		@include font-size(0.875);
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; /* Above WP toolbar. */
+	}
+}
+.flexwrap {
+	position: relative;
+	@include flexgroup();
+}
+.site {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 30em;
+}
+.wrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	position: relative;
+	z-index: 10;
+	&.narrow {
+		max-width: 900px;
+	}
+	&.sm {
+		max-width: 800px;
+	}
+	&.wide {
+		max-width: 80%;
+    @include tab {
+      max-width: 90%;
+    }
+	}
+}
+
+/* HEADER */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  .wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .flexwrap {
+    @include flexbox-justify(space-between);
+  }
+}
+#site-logo {
+  display: inline-block;
+  width: auto;
+  h1 {
+    margin: 0 0;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  a.custom-logo-link {
+    display: block;
+    width: 250px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+#site-navigation {
+  @include flexgroup();
+  nav {
+    display: block;
+    width: 100%;
+  }
+
+
+  ul.menu {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+  }
+
+  #navigation {
+    ul.menu {
+      display: inline-block;
+      float: right;
+    }
+    ul.menu > li {
+      float: left;
+    }
+    ul.menu a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+    }
+    ul.menu > li > a {
+      padding: 5px 10px;
+    }
+    ul.menu > li:hover > a {
+      color: $primary;
+    }
+  }
+
+  #topnav {
+    ul.menu {
+      display: inline-block;
+      float: right;
+      position: relative;
+      top: -5px;
+    }
+    ul.menu > li {
+      display: inline-block;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 12px;
+      color: #000;
+      padding: 3px 10px;
+      &:hover {
+        color: $primary;
+      }
+      i {
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+/* MENU */
+.mobile-menu {
+  display: none;
+}
+
+
+/* HOME SLIDER */
+#home-slider {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  .swiper,.swiper-wrapper,.swiper-slide {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    position: relative;
+  }
+  .slide-image {
+    width: 75vw;
+    height: 100%;
+    @include backgroundImage(center);
+    background-color: #CCC;
+  }
+  .slide-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    @include flexgroup();
+    @include flexbox-align-items(center);
+    .textwrap {
+      max-width: 90%;
+      width: 100%;
+      padding: 0 20px;
+      margin:0 auto;
+      color: $primary;
+      font-family: $font_secondary;
+      font-size: 7vh;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .wrap {
+      max-width: 50vw;
+      width: 100%;
+      float: right;
+    }
+    .inline {
+      display: inline-block;
+      float: right;
+      position: relative;
+      @include animateThis(1s);
+      @include tab {
+        padding-right: 3vw;
+        &:after {
+          content:"";
+          display: block;
+          width: 2px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          transition: all ease .3s;
+          background: $primary;
+        }
+      }
+    }
+    p, h1, h2, h3, h4, h5 {
+      margin: 0 0;
+    }
+    h1, h2, h3, h4, h5  {
+      position: relative;
+      top: -1vh;
+      font-weight: 600;
+    }
+  }
+  .swiper-slide-active {
+    .inline {
+      @include animateEffect(fadeInRight);
+      @include tab {
+        &:after {
+          animation-delay: 2s;
+          animation: vLineEffect 1.3s linear;
+        }
+      }
+    }
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border: 1px solid $primary;
+    opacity: 1;
+    background: rgba(255,255,255,.3);
+    &.swiper-pagination-bullet-active {
+      background: $primary;
+    }
+  }
+}
+
+.home-intro {
+  background: $primary;
+  @include tab {
+    padding-left: calc(5% + 20px);
+  }
+  p {
+    margin: 0 0 15px;
+  }
+  .textwrap {
+    color: #000;
+    position: relative;
+    background: $gray;
+  }
+  .hometext {
+    padding: 50px 20px;
+    width: 70vw;
+  }
+  .graphic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25vw;
+    height: 100%;
+    background-image:url('assets/images/symbol-white.svg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat:no-repeat;
+  }
+}
+
+.home-blocks {
+  .flexwrap {
+    margin: 0 -5px;
+    @include flexbox-justify(space-around);
+  }
+  .block {
+    width: 100%;
+    padding: 10px;
+    @include tab {
+      width: 33.33%;
+    }
+    a {
+      display: block;
+      width: 100%;
+      float: left;
+      position: relative;
+      .image {
+        display: block;
+        width: 100%;
+        float: left;
+        @include backgroundImage(center);
+        img {
+          width: 100%;
+          height: auto;
+          float: left;
+        }
+      }
+      .title {
+        display: block;
+        width: 100%;
+        float: left;
+        text-align: center;
+        padding: 15px 15px;
+        font-size: 15px;
+        line-height: 1.2;
+        color: #000;
+        background: $gray;
+      }
+    }
+  }
+  .hb-left {
+    padding: 50px 20px;
+  }
+  .hb-right {
+    width: 25vw;
+    float: right;
+  }
+  .hb-left
+  .hb-right {
+    height: 100%;
+  }
+  .hb-right {
+    .image {
+      width: 100%;
+      height: 100%;
+      @include backgroundImage(center);
+      background-color: $gray;
+    }
+  }
+
+  &.twocol {
+    @include flexgroup();
+    .hb-left {
+      width: 75vw;
+      @include tab {
+        padding-left: calc(5% + 20px);
+        padding-right: calc(5% + 20px);
+      }
+    }
+  }
+  
+  
+}
+
+@keyframes vLineEffect {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
