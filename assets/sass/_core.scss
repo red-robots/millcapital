@@ -733,6 +733,7 @@ h1.page-title {
   padding-bottom: 30px;
   .block {
     padding: 20px;
+    margin: 10px 0;
   }
   .inner {
     width: 100%;
@@ -761,6 +762,9 @@ h1.page-title {
     float: left;
     background: #e2e2e2;
     position: relative;
+    * {
+      margin: 0 0;
+    }
     img {
       width: 100%;
       height: auto;
@@ -834,6 +838,9 @@ h1.page-title {
         }
       }
     }
+  }
+  p:empty {
+    display: none;
   }
 }
 .team-feeds {
