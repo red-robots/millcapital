@@ -340,12 +340,8 @@ function team_feeds_shortcode_func( $atts ) {
   ), $atts );
   $numcol = ($a['numcol']) ? $a['numcol'] : 3;
   $output = '';
-  // ob_start();
-  // include( locate_template('parts/team_feeds.php') );
-  // $output = ob_get_contents();
-  // ob_end_clean();
-  $output = get_template_part('parts/team_feeds');
-  return $output;
+  $output = get_template_part('parts/team_feeds',null,$a);
+  return $result;
 }
 
 

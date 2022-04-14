@@ -1,13 +1,14 @@
 <?php  
-  $args = array(
+  $numcol = ( isset($args['numcol']) && $args['numcol'] ) ? $args['numcol'] : '';
+  $arrs = array(
     'posts_per_page'   => -1,
     'post_type'        => 'team',
     'post_status'      => 'publish'
   );
-  $teams = new WP_Query($args);
+  $teams = new WP_Query($arrs);
   if ( $teams->have_posts() ) { ?>
   <section class="team-feeds">
-    <div class="blocks-wrapper columns-3">
+    <div class="blocks-wrapper columns-<?php echo $numcol ?>">
       <?php while ( $teams->have_posts() ) : $teams->the_post(); 
         $placeholder = THEMEURI . 'assets/images/profile.png';
         $photo = get_field('photo');
