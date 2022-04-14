@@ -333,8 +333,8 @@ function get_excerpt($text,$limit=100) {
 }   
 
 
-add_shortcode( 'team_feeds', 'team_feeds_shortcode_func' );
-function team_feeds_shortcode_func( $atts ) {
+add_shortcode( 'team_list', 'team_list_shortcode_func' );
+function team_list_shortcode_func( $atts ) {
   $a = shortcode_atts( array(
     'numcol'=>3
   ), $atts );
