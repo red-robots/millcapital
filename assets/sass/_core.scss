@@ -94,6 +94,7 @@ a {
   overflow-y: auto;
   min-height: 30em;
 }
+.wp-block-column,
 .wrapper {
 	max-width: 1200px;
 	width: 100%;
@@ -118,18 +119,26 @@ a {
 
 /* HEADER */
 .site-header {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  .wrapper {
+  .wrapper.wide {
     padding-top: 30px;
     padding-bottom: 30px;
+    max-width: 100%;
+    @include tab {
+      max-width: 80%;
+    }
   }
   .flexwrap {
     @include flexbox-justify(space-between);
+    @include flexbox-align-items(center);
   }
+}
+body.home .site-header {
+  position: absolute;
 }
 #site-logo {
   display: inline-block;
@@ -181,6 +190,9 @@ a {
     ul.menu > li:hover > a {
       color: $primary;
     }
+    ul.menu > li.current_page_item > a {
+      color: $primary;
+    }
   }
 
   #topnav {
@@ -213,6 +225,157 @@ a {
 /* MENU */
 .mobile-menu {
   display: none;
+  overflow: hidden;
+  width: 30px;
+  height: 34px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  i {
+    overflow: hidden;
+    display: inline-block;
+    text-indent: -99em;
+  }
+  span.bar, 
+  span.bar:before,
+  span.bar:after {
+    width: 100%;
+    height: 3px;
+    background: $primary;
+    position: absolute;
+    transition: all ease .3s;
+  }
+  span.bar {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  span.bar:before,
+  span.bar:after {
+    content:"";
+  }
+  span.bar:before {
+    transform: translateY(-10px);
+  }
+  span.bar:after {
+    transform: translateY(10px);
+  }
+}
+
+@media screen and (max-width: $tabwidth) {
+  .mobile-menu {
+    display: block;
+  }
+  #site-navigation {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    height: 100%;
+    background: #FFF;
+    z-index: 9999;
+    padding-top: 25px;
+    transition: all ease .3s;
+    overflow: auto;
+    &.show {
+      right: 0;
+    }
+  }
+  #closeMobileNav {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 50;
+    &:before, &:after {
+      content:"";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #000;
+      position: absolute;
+      top: 50%;
+    }
+    &:before {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    &:after {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+  nav,
+  ul.menu,
+  ul.menu li {
+    width: 100%;
+    float: left;
+  }
+  nav.topnav {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+    // border-bottom: 1px solid $primary;
+    
+    li {
+      padding:0 20px;
+    }
+    li:first-child a {
+      font-size: 13px!important;
+      padding: 5px 10px!important;
+      border: 1px solid $primary;
+      color: $primary!important;
+      &:hover {
+        background: $primary;
+        color: #FFF!important;
+      }
+    }
+  }
+  nav#navigation {
+    padding-bottom: 30px;
+  }
+  #site-navigation #navigation ul.menu>li>a {
+    padding: 5px 20px;
+    font-size: 16px;
+  }
+  body.mobile-menu-open {
+    .site-header {
+      &:after {
+        content:"";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,.65);
+        transition: all ease .3s;
+        @include animateThis(1s);
+        @include animateEffect(fadeIn);
+      }
+    }
+  }
+  #home-slider .slide-text .wrap {
+    max-width: 100%!important;
+    .inline {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  body.logged-in.admin-bar {
+    #site-navigation {
+      padding-top: 70px;
+    }
+    #closeMobileNav {
+      top: 66px;
+    }
+  }
+}
+@media screen and (max-width: $portrait) {
+  #site-navigation {
+    max-width: 85%;
+  }
 }
 
 
@@ -229,10 +392,13 @@ a {
     position: relative;
   }
   .slide-image {
-    width: 75vw;
+    width: 100%;
     height: 100%;
     @include backgroundImage(center);
     background-color: #CCC;
+    @include mid {
+      width: 75vw;
+    }
   }
   .slide-text {
     position: absolute;
@@ -250,9 +416,12 @@ a {
       margin:0 auto;
       color: $primary;
       font-family: $font_secondary;
-      font-size: 7vh;
+      font-size: 4vh;
       font-weight: 500;
       line-height: 1.2;
+      @include mid {
+        font-size: 7vh;
+      }
     }
     .wrap {
       max-width: 50vw;
@@ -325,19 +494,29 @@ a {
     background: $gray;
   }
   .hometext {
+    position: relative;
     padding: 50px 20px;
-    width: 70vw;
+    width: 100%;
+    z-index: 10;
+    @include tab {
+      width: 70vw;
+    }
   }
   .graphic {
     position: absolute;
     top: 0;
     right: 0;
-    width: 25vw;
+    width: 100%;
     height: 100%;
     background-image:url('assets/images/symbol-white.svg');
     background-position: top center;
     background-size: cover;
     background-repeat:no-repeat;
+    opacity: 0.45;
+    @include tab {
+      width: 25vw;
+      opacity: 1;
+    }
   }
 }
 
@@ -409,12 +588,18 @@ a {
           background: $gray;
         }
         &:before {
-          left: -2.3vw;
+          left: -10vw;
           transform: skew(40deg);
+          @include tab {
+            left: -2.2vw;
+          }
         }
         &:after {
-          right: -2.3vw;
+          right: -10vw;
           transform: skew(-40deg);
+          @include tab {
+            right: -2.2vw;
+          }
         }
       }
       &:hover {
@@ -430,8 +615,15 @@ a {
     padding: 50px 20px;
   }
   .hb-right {
-    width: 25vw;
-    float: right;
+    width: 100%;
+    float: left;
+    img {
+      width: 100%;
+      height: auto;
+      @include tab {
+        display: none;
+      }
+    }
   }
   .hb-left
   .hb-right {
@@ -448,9 +640,16 @@ a {
 
   &.twocol {
     @include flexgroup();
-    .hb-left {
-      width: 75vw;
+    .hb-right {
+      width: 100%;
       @include tab {
+        width: 25vw;
+      }
+    }
+    .hb-left {
+      width: 100%;
+      @include tab {
+        width: 75vw;
         padding-left: calc(5% + 20px);
         padding-right: calc(5% + 20px);
       }
@@ -469,7 +668,225 @@ a {
     }
   }
 
+/* INNER PAGE */
+body.subpage {
+  .site-header {
+    background: #FFF;
+    .wrapper.wide {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .flexwrap {
+      @include flexbox-align-items(center);
+    }
+  }
+  #content {
+    position: relative;
+    &:after {
+      content:"";
+      display: block;
+      width: 100%;
+      height: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: -moz-linear-gradient(top,  rgba(0,0,0,0.36) 0%, rgba(0,0,0,0) 100%);
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0.36) 0%,rgba(0,0,0,0) 100%);
+      background: linear-gradient(to bottom,  rgba(0,0,0,0.36) 0%,rgba(0,0,0,0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c000000', endColorstr='#00000000',GradientType=0 );
+      opacity: 0.2;
+    }
+  }
+  #primary {
+    min-height: 30em;
+    position: relative;
+    z-index: 15;
+    padding-top: 50px;
+  }
+}
 
+h1.page-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0;
+  color: $primary;
+  position: relative;
+  padding-left: 30px;
+  &:before {
+    content:"";
+    display: block;
+    width: 2px;
+    height: 100%;
+    background: $primary;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.blocks-wrapper {
+  @include flexgroup();
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .block {
+    padding: 20px;
+  }
+  .inner {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+  &.columns-3 {
+    .block {
+      width: 100%;
+      @include tab {
+        width: 33.33%;
+      }
+    }
+  }
+  &.columns-4 {
+    .block {
+      width: 100%;
+      @include tab {
+        width: 25%;
+      }
+    }
+  }
+  .photo {
+    margin: 0 0;
+    width: 100%;
+    float: left;
+    background: #e2e2e2;
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+      float: left;
+    }
+    .image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include backgroundImage(center);
+    }
+  }
+  .info {
+    width: 100%;
+    float: left;
+    padding: 10px 0;
+    .name {
+      margin: 0 0 3px;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: $primary;
+    }
+    .jobtitle {
+      font-size: 13px;
+      line-height: 1.2;
+      color: #2E2E2E;
+    }
+  }
+  .block.no-photo {
+    .photo:before {
+      content:"Photo Coming Soon";
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      font-family: $font_secondary;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #a6a6a6;
+      position: absolute;
+      top: 50%;
+      text-transform: uppercase;
+      transform: translateY(-50%);
+    }
+  }
+  .bio-link {
+    margin-top: 15px;
+    a {
+      text-decoration: none;
+      color: $color_link;
+      font-size: 12px;
+      position: relative;
+      left: 2px;
+      top: 0px;
+      span {
+        display: inline-block;
+        transition: all ease .3s;
+        position: relative;
+        left: 2px;
+        font-size: 11px;
+      }
+      &:hover {
+        color: tint($color_link,40%);
+        span {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}
+.team-feeds {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  z-index: 10;
+}
+.wp-block-columns {
+  margin: 0 0;
+}
+.wp-block-column.full-width-gray {
+  max-width: 100%;
+  background: $gray;
+  padding: 30px 20px;
+  .wp-block-column {
+    max-width: 700px;
+    width: 100%;
+    padding: 30px 0 0;
+    h2 {
+      margin: 0 0;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: $primary;
+    }
+  }
+  .wp-block-buttons {
+    padding-bottom: 30px;
+    max-width: 700px;
+    width: 100%;
+    margin:25px auto 0;
+  }
+  .wp-block-button {
+    a {
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $primary;
+      background: transparent;
+      border: 1px solid $primary;
+      border-radius: 0;
+      padding: 7px 25px;
+      &:hover {
+        background: $primary;
+        color: #FFF;
+      }
+    }
+  }
+}
 
 /* FOOTER */
 .site-footer {
@@ -487,8 +904,11 @@ a {
     }
   }
   .flexwrap {
-    @include flexbox-justify(space-between);
+    @include flexbox-justify(center);
     @include flexbox-align-items(center);
+    @include tab {
+      @include flexbox-justify(space-between);
+    }
   }
   .social-media {
     text-align: center;
@@ -525,15 +945,33 @@ a {
   }
 }
 #footer-navigation {
+  width: 100%;
+  margin: 30px 0;
+  @include tab {
+    width: auto;
+    margin: 0 0;
+  }
   ul.menu {
-    display: inline-block;
+    display: block;
     text-align: center;
     margin:0 0;
     padding: 0 0;
     list-style: none;
+    text-align: center;
+    width: 100%;
+    @include tab {
+      display: inline-block;
+      text-align: left;
+      width: auto;
+    }
   }
   ul.menu li {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    @include tab {
+      display: inline-block;
+      width: auto;
+    }
   }
   ul.menu li ul {
     display: none;

@@ -24,6 +24,16 @@ jQuery(document).ready(function ($) {
   //     el: '.swiper-scrollbar',
   //   },
   // });
+  $('#menutoggle').on('click', function (e) {
+    e.preventDefault();
+    $('body').addClass('mobile-menu-open');
+    $('#site-navigation').addClass('show');
+  });
+  $('#closeMobileNav').on('click', function (e) {
+    e.preventDefault();
+    $('body').removeClass('mobile-menu-open');
+    $('#site-navigation').removeClass('show');
+  });
   var swiper = new Swiper('.slideshow .swiper', {
     autoplay: {
       delay: 10000

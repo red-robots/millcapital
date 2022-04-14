@@ -10,9 +10,9 @@ function js_custom_init() {
     $post_types = array(
       array(
         'post_type' => 'team',
-        'menu_name' => 'People',
-        'plural'    => 'People',
-        'single'    => 'People',
+        'menu_name' => 'Team',
+        'plural'    => 'Team',
+        'single'    => 'Team',
         'menu_icon' => 'dashicons-groups',
         'supports'  => array('title','editor')
       ),

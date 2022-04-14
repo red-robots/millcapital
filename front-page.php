@@ -48,7 +48,9 @@ get_header();
 
         <?php if ($home_colright_img) { ?>
         <div class="hb-right">
-          <div class="image" style="background-image:url('<?php echo $home_colright_img['url'] ?>')"></div>
+          <div class="image" style="background-image:url('<?php echo $home_colright_img['url'] ?>')">
+            <img src="<?php echo $home_colright_img['url'] ?>" alt="<?php echo $home_colright_img['title'] ?>">
+          </div>
         </div>
         <?php } ?>
       </section>

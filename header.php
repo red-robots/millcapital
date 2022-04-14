@@ -52,7 +52,7 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
           <?php } ?>
   			</div>
 
-        <a class="mobile-menu" id="menutoggle" href="#mobile-menu"><span class="bar"></span><i>Menu</i></a>
+        <a class="mobile-menu" id="menutoggle" href="javascript:void(0)"><span class="bar"></span><i>Menu</i></a>
 
         <?php if ( has_nav_menu( 'primary' ) ||  $topNavs ) { ?>
         <div id="site-navigation">
@@ -79,6 +79,8 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
             <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container'=>false, 'menu_id' => 'primary-menu') ); ?>
           </nav>
           <?php } ?>
+
+          <span id="closeMobileNav"></span>
         </div>
         <?php } ?>
       

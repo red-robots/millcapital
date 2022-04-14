@@ -333,22 +333,20 @@ function get_excerpt($text,$limit=100) {
 }   
 
 
-/* Update Peope post type */
-// if( (isset($_GET['post_type']) && $_GET['post_type']=='team') && (isset($_GET['do']) && $_GET['do']=='update') ) {
-//   $args = array(
-//     'posts_per_page'   => -1,
-//     'post_type'        => 'people',
-//     'post_status'      => 'publish'
-//   );
-//   $team = get_posts($args);
-//   if($team) {
-//     foreach($team as $p) {
-//       $pid = $p->ID;
-//       $p->post_type="team";
-//       wp_update_post($p);
-//     }
-//   }
-// }
+add_shortcode( 'team_feeds', 'team_feeds_shortcode_func' );
+function team_feeds_shortcode_func( $atts ) {
+  $a = shortcode_atts( array(
+    'numcol'=>3
+  ), $atts );
+  $numcol = ($a['numcol']) ? $a['numcol'] : 3;
+  $output = '';
+  // ob_start();
+  // include( locate_template('parts/team_feeds.php') );
+  // $output = ob_get_contents();
+  // ob_end_clean();
+  $output = get_template_part('parts/team_feeds');
+  return $output;
+}
 
 
 
