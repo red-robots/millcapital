@@ -495,9 +495,10 @@ body.home .site-header {
   }
   .hometext {
     position: relative;
-    padding: 50px 20px;
+    padding: 50px 40px 50px 20px;
     width: 100%;
     z-index: 10;
+    line-height: 1.4;
     @include tab {
       width: 70vw;
     }
