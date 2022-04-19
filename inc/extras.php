@@ -353,7 +353,8 @@ function team_list_shortcode_func( $atts ) {
 function ea_disable_editor( $id = false ) {
 
   $excluded_templates = array(
-    'template-flexible-content.php'
+    'template-flexible-content.php',
+    'page-clientlogin.php'
   );
 
   $excluded_ids = array(
@@ -391,17 +392,17 @@ add_filter( 'use_block_editor_for_post_type', 'ea_disable_gutenberg', 10, 2 );
  * Disable Classic Editor by template
  *
  */
-function ea_disable_classic_editor() {
+// function ea_disable_classic_editor() {
 
-  $screen = get_current_screen();
-  if( 'page' !== $screen->id || ! isset( $_GET['post']) )
-    return;
+//   $screen = get_current_screen();
+//   if( 'page' !== $screen->id || ! isset( $_GET['post']) )
+//     return;
 
-  if( ea_disable_editor( $_GET['post'] ) ) {
-    remove_post_type_support( 'page', 'editor' );
-  }
+//   if( ea_disable_editor( $_GET['post'] ) ) {
+//     remove_post_type_support( 'page', 'editor' );
+//   }
 
-}
-add_action( 'admin_head', 'ea_disable_classic_editor' );
+// }
+// add_action( 'admin_head', 'ea_disable_classic_editor' );
 
 

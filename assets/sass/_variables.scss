@@ -19,7 +19,7 @@ $xswidth: 600px;
 $tabwidth: 820px;
 $midwidth: 960px;
 $deskwidth: 1200px;
-$xxl: 1300px;
+$xxl: 1380px;
 $nav_width: 350px;
 
 @mixin xxs { @media (min-width: $portrait) { @content; } }

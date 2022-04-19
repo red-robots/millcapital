@@ -136,7 +136,8 @@ a {
     padding-bottom: 30px;
     max-width: 100%;
     @include tab {
-      max-width: 90%;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
   .flexwrap {
@@ -150,6 +151,9 @@ body.home .site-header {
 #site-logo {
   display: inline-block;
   width: auto;
+  @include tab {
+    padding-left: 5%;
+  }
   h1 {
     margin: 0 0;
     font-size: 20px;
@@ -166,6 +170,18 @@ body.home .site-header {
 }
 #site-navigation {
   @include flexgroup();
+  position: relative;
+  @include tab {
+    width: 27%;
+    padding-left: 20px;
+    padding-right: 5%;
+  }
+  @include mid {
+    padding-right: 20px;
+  }
+  @include xxl {
+    padding-right: 5%;
+  }
   nav {
     display: block;
     width: 100%;
@@ -182,9 +198,16 @@ body.home .site-header {
     ul.menu {
       display: inline-block;
       float: right;
+      @include tab {
+        @include flexgroup();
+        @include flexbox-justify(flex-end);
+      }
     }
     ul.menu > li {
       float: left;
+      @include tab {
+        float: none;
+      }
     }
     ul.menu a {
       display: block;
@@ -403,8 +426,8 @@ body.home .site-header {
     height: 100%;
     @include backgroundImage(center);
     background-color: #CCC;
-    @include mid {
-      width: 75vw;
+    @include tab {
+      width: 73%;
     }
   }
   .slide-text {
@@ -490,7 +513,7 @@ body.home .site-header {
 .home-intro {
   background: $primary;
   @include tab {
-    padding-left: calc(5% + 20px);
+    // padding-left: calc(5% + 20px);
   }
   p {
     margin: 0 0 15px;
@@ -498,16 +521,20 @@ body.home .site-header {
   .textwrap {
     color: #000;
     position: relative;
-    background: $gray;
+    background: $primary;
   }
   .hometext {
     position: relative;
-    padding: 50px 40px 50px 20px;
     width: 100%;
     z-index: 10;
     line-height: 1.4;
     @include tab {
-      width: 70vw;
+      width: 73%;
+      padding-left: calc(5% + 20px);
+    }
+    .inside {
+      background: $gray;
+      padding: 60px 5vw 50px 5vw;
     }
   }
   .graphic {
@@ -517,18 +544,20 @@ body.home .site-header {
     width: 100%;
     height: 100%;
     background-image:url('assets/images/symbol-white.svg');
-    background-position: top center;
+    background-position: 0 0;
     background-size: cover;
     background-repeat:no-repeat;
+    background-color: $gray;
     opacity: 0.45;
     @include tab {
-      width: 25vw;
+      width: 27%;
       opacity: 1;
     }
   }
 }
 
 .home-blocks {
+  position: relative;
   .flexwrap {
     margin: 0 -5px;
     @include flexbox-justify(space-around);
@@ -536,6 +565,7 @@ body.home .site-header {
   .block {
     width: 100%;
     padding: 10px;
+    overflow: hidden;
     @include tab {
       width: 33.33%;
     }
@@ -651,13 +681,191 @@ body.home .site-header {
     .hb-right {
       width: 100%;
       @include tab {
-        width: 25vw;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 27%;
+        height: 100%;
       }
     }
     .hb-left {
       width: 100%;
       @include tab {
-        width: 75vw;
+        width: 73%;
+        padding-left: calc(5% + 20px);
+        padding-right: calc(5% + 20px);
+      }
+    }
+  }
+  
+  
+}
+
+.styled-blocks {
+  position: relative;
+  @include mid {
+    min-height: 30em;
+  }
+  .wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include mid {
+      padding-top: 5vw;
+      padding-bottom: 10vw;
+    }
+  }
+  .flexwrap {
+    margin: 0 -5px;
+    @include flexbox-justify(space-around);
+  }
+  .block {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    @include tab {
+      width: 33.33%;
+    }
+    a {
+      display: block;
+      width: 100%;
+      float: left;
+      position: relative;
+      overflow: hidden;
+      background: $gray;
+      .image {
+        display: block;
+        width: 100%;
+        float: left;
+        position: relative;
+        overflow: hidden;
+        .bg {
+          display: block;
+          width: 100%;
+          height: 100%;
+          float: left;
+          transition: all ease .3s;
+          position: absolute;
+          top: -10px;
+          left: 0;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        img {
+          width: 100%;
+          height: auto;
+          float: left;
+        }
+      }
+      .title {
+        display: block;
+        width: 100%;
+        float: left;
+        text-align: center;
+        padding: 0 0 10px;
+        font-size: 15px;
+        line-height: 1.2;
+        color: #000;
+        position: relative;
+        span {
+          display: block;
+          position: relative;
+          z-index: 10;
+          top: -4px;
+          padding:0 15px;
+          &:before {
+            content:"";
+            display: block;
+            width: 100%;
+            height: 10px;
+            background: $gray;
+            position: absolute;
+            top: -8px;
+            left: 0;
+          }
+          b {
+            display: inline-block;
+            position: relative;
+            font-weight: normal;
+            z-index: 5;
+          }
+        }
+        &:before, &:after {
+          content:"";
+          display: block;
+          width: 60%;
+          height: 20px;
+          position: absolute;
+          top: -30px;
+          background: $gray;
+        }
+        &:before {
+          left: -10vw;
+          transform: skew(40deg);
+          @include tab {
+            left: -2.8vw;
+          }
+        }
+        &:after {
+          right: -10vw;
+          transform: skew(-40deg);
+          @include tab {
+            right: -2.8vw;
+          }
+        }
+      }
+      &:hover {
+        .image {
+          .bg {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+  .hb-left {
+    padding: 50px 20px;
+  }
+  .hb-right {
+    width: 100%;
+    float: left;
+    img {
+      width: 100%;
+      height: auto;
+      @include tab {
+        display: none;
+      }
+    }
+  }
+  .hb-left
+  .hb-right {
+    height: 100%;
+  }
+  .hb-right {
+    .image {
+      width: 100%;
+      height: 100%;
+      @include backgroundImage(center);
+      background-color: $gray;
+    }
+  }
+
+  &.twocol {
+    @include flexgroup();
+    .hb-right {
+      width: 100%;
+      @include tab {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 27%;
+        height: 100%;
+      }
+    }
+    .hb-left {
+      width: 100%;
+      @include tab {
+        width: 73%;
         padding-left: calc(5% + 20px);
         padding-right: calc(5% + 20px);
       }
@@ -710,6 +918,11 @@ body.subpage {
     position: relative;
     z-index: 15;
     padding-top: 0;
+  }
+  &.no-banner {
+    .entry-title {
+      background: transparent!important;
+    }
   }
 }
 
@@ -906,7 +1119,7 @@ h1.page-title {
 .entry-title {
   min-height: 185px;
   position: relative;
-  background: #e2e2e2;
+  background: $gray;
   @include flexgroup();
   @include flexbox-justify(center);
   @include flexbox-align-items(center);
@@ -914,6 +1127,9 @@ h1.page-title {
     width: 100%;
     position: relative;
     z-index: 5;
+    .wrapper {
+      max-width: 83%;
+    }
   }
   .header-image {
     position: absolute;
@@ -999,8 +1215,14 @@ body.subpage.page-template-default {
 .two-columns-style1 {
   position: relative;
   .wrapper {
-    padding-top: 90px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    @include tab {
+      padding-top: 90px;
+      padding-bottom: 100px;
+      max-width: 90%;
+      width: 100%;
+    }
   }
   .flexwrap {
     @include flexbox-justify(center);
@@ -1073,12 +1295,25 @@ body.subpage.page-template-default {
         @include flexbox-direction(row-reverse);
       }
     }
-    .column.image {
+    .column.text {
+      padding-right: 10vw;
       @include tab {
-        padding-right: 5vw;
+        padding-right: 7%;
+      }
+    }
+    .column.image {
+      padding-left: 10vw;
+      padding-right: 5vw;
+      figure:before {
+        margin-left: -5vw;
+      }
+      @include tab {
+        padding-left: 5%;
+        padding-right: 5%;
         figure {
           &:before, &:after {
             left: -4vw;
+            margin: 0 0;
           }
         }
       }
@@ -1086,12 +1321,15 @@ body.subpage.page-template-default {
     &:before {
       content:"";
       display: block;
-      width: 10vw;
-      height: 40px;
+      width: 6%;
+      height: 25px;
       background: $primary;
       position:absolute;
-      top: 100px;
+      top: 65px;
       right: 0;
+      @include tab {
+        top: 100px;
+      }
     }
   }
   &.half {
@@ -1105,19 +1343,35 @@ body.subpage.page-template-default {
     &:before {
       content:"";
       display: block;
-      width: 10vw;
-      height: 40px;
+      width: 6%;
+      height: 25px;
       background: $primary;
       position:absolute;
-      top: 100px;
+      top: 65px;
       left: 0;
+      @include tab {
+        top: 100px;
+      }
+    }
+    .column.text {
+      padding-left: 10vw;
+      @include tab {
+        padding-left: 7%;
+      }
     }
     .column.image {
+      padding-left: 10vw;
+      padding-right: 5vw;
+      figure:before {
+        margin-left: -5vw;
+      }
       @include tab {
-        padding-left: 5vw;
+        padding-left: 5%;
+        padding-right: 5%;
         figure {
           &:before, &:after {
             right: -4vw;
+            margin: 0 0;
           }
         }
       }
@@ -1159,7 +1413,10 @@ body.subpage.page-template-default {
     }
     &.image {
       position: relative;
-      padding: 0 0;
+      padding: 40px 0 60px;
+      @include tab {
+        padding: 0 0;
+      }
       &:before,&:after {
         content:"";
         display: block;
@@ -1176,9 +1433,12 @@ body.subpage.page-template-default {
         background-color: $primary;
       }
       figure {
-        margin: 70px 0 0;
+        margin: 0 0;
         position: relative;
         z-index: 10;
+        @include tab {
+          margin: 70px 0 0;
+        }
         img {
           width: 100%;
           height: auto;
@@ -1221,7 +1481,7 @@ body.subpage.page-template-default {
     top: 0;
     left: 0;
     background-image:url('assets/images/symbol-white.svg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: repeat;
     opacity: 0.05;

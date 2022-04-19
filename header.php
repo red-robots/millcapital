@@ -35,8 +35,14 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 </script>
 <?php wp_head(); ?>
 </head>
-<?php $topNavs = get_field("topNavs","option"); ?>
-<body <?php body_class();?>>
+<?php 
+$extraClass = '';
+if(is_page()) {
+  $extraClass .= (get_field('header_image')) ? ' has-banner':' no-banner';
+}
+$topNavs = get_field("topNavs","option"); 
+?>
+<body <?php body_class($extraClass);?>>
 <div id="page" class="site cf">
 	<div id="overlay"></div>
 	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>

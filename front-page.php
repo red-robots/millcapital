@@ -9,7 +9,7 @@ get_header();
     <section class="home-intro">
       <div class="textwrap">
         <?php if ( get_the_content() ) { ?>
-          <div class="hometext"><?php the_content(); ?></div>
+          <div class="hometext"><div class="inside"><?php the_content(); ?></div></div>
         <?php } ?>
         <div class="graphic"></div>
       </div>
