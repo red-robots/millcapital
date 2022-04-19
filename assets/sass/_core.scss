@@ -1658,6 +1658,14 @@ body.subpage.page-template-default {
     li {
       color: $primary;
       margin: 5px 0;
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: $primary;
+        &:hover {
+          color: $secondary;
+        }
+      }
       i {
         display: inline-block;
         margin-right: 3px;

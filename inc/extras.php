@@ -360,10 +360,21 @@ function contact_info_shortcode_func( $atts ) {
   $info['email'] = array('icon'=>'fa fa-envelope','val'=>get_field('email','option'));
   $output = '';
   $items = '';
-  foreach($info as $i) {
+  foreach($info as $k=>$i) {
     if( $i['val'] ) {
       $icon = ($i['icon']) ? '<i class="'.$i['icon'].'" aria-hidden="true"></i> ':'';
-      $items .= '<li>'.$icon.$i['val'].'</li>';
+      if($k=='email') {
+        $items .= '<li><a href="mailto:'.antispambot($i['val'],1).'">'.$icon.antispambot($i['val']).'</a></li>';
+      } 
+      else if($k=='phone') {
+        $items .= '<li><a href="tel:'.format_phone_number($i['val']).'">'.$icon.$i['val'].'</a></li>';
+      } 
+      else {
+        $items .= '<li>'.$icon.$i['val'].'</li>';
+      }
+
+      
+      
     }
   }
   if($items) {

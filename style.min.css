@@ -1501,6 +1501,8 @@ body.subpage.page-template-default #content:after{display:none}
 .contact-page .twoCols .left-col{margin-bottom:30px}
 .contact-page .contact-data{margin:0;padding:0;list-style:none}
 .contact-page .contact-data li{color:#163d6d;margin:5px 0}
+.contact-page .contact-data li a{display:inline-block;text-decoration:none;color:#163d6d}
+.contact-page .contact-data li a:hover{color:#3ec8dc}
 .contact-page .contact-data li i{display:inline-block;margin-right:3px}
 .contact-page .map{position:relative;width:100%;float:left;background:#efeeee;border:1px solid #e6e6e6;-webkit-box-shadow:5px 5px 5px rgba(0,0,0,.08);box-shadow:5px 5px 5px rgba(0,0,0,.08)}
 .contact-page .map img{width:100%;height:auto;float:left}
