@@ -1623,6 +1623,19 @@ body.subpage.page-template-default {
         padding-bottom: 150px;
       }
     }
+    &:before {
+      content:"";
+      display: block;
+      width: 5vw;
+      height: 25px;
+      background: $primary;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      @include tab {
+        top: 70px;
+      }
+    }
   }
   .twoCols {
     h2 {
@@ -1645,9 +1658,13 @@ body.subpage.page-template-default {
     }
     .left-col {
       margin-bottom: 30px;
+      padding-left: 8vw;
       @include tab {
         margin-bottom: 0;
         padding-right: 5vw;
+      }
+      @include mid {
+        padding-left: 1.5vw;
       }
     }
   }
