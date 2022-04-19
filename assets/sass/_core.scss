@@ -1670,15 +1670,18 @@ body.subpage.page-template-default {
   }
   .contact-data {
     margin: 0 0;
-    padding: 0 0;
+    padding: 0 20px;
     list-style: none;
     li {
       color: $primary;
-      margin: 5px 0;
+      margin: 10px 0;
+      position: relative;
+      padding-left: 15px;
       a {
         display: inline-block;
         text-decoration: none;
         color: $primary;
+        position: relative;
         &:hover {
           color: $secondary;
         }
@@ -1686,6 +1689,13 @@ body.subpage.page-template-default {
       i {
         display: inline-block;
         margin-right: 3px;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        &.fa.fa-envelope {
+          top: 6px;
+          font-size: 10px;
+        }
       }
     }
   }

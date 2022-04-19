@@ -1500,11 +1500,12 @@ body.subpage.page-template-default #content:after{display:none}
 .contact-page .twoCols h2{font-size:30px;font-weight:500;line-height:1.2;margin:0 0 20px;color:#163d6d;border-bottom:2px solid #163d6d;padding-bottom:15px;top:-7px;position:relative}
 .contact-page .twoCols .left-col,.contact-page .twoCols .right-col{width:100%}
 .contact-page .twoCols .left-col{margin-bottom:30px;padding-left:8vw}
-.contact-page .contact-data{margin:0;padding:0;list-style:none}
-.contact-page .contact-data li{color:#163d6d;margin:5px 0}
-.contact-page .contact-data li a{display:inline-block;text-decoration:none;color:#163d6d}
+.contact-page .contact-data{margin:0;padding:0 20px;list-style:none}
+.contact-page .contact-data li{color:#163d6d;margin:10px 0;position:relative;padding-left:15px}
+.contact-page .contact-data li a{display:inline-block;text-decoration:none;color:#163d6d;position:relative}
 .contact-page .contact-data li a:hover{color:#3ec8dc}
-.contact-page .contact-data li i{display:inline-block;margin-right:3px}
+.contact-page .contact-data li i{display:inline-block;margin-right:3px;position:absolute;top:4px;left:0}
+.contact-page .contact-data li i.fa.fa-envelope{top:6px;font-size:10px}
 .contact-page .map{position:relative;width:100%;float:left;background:#efeeee;border:1px solid #e6e6e6;-webkit-box-shadow:5px 5px 5px rgba(0,0,0,.08);box-shadow:5px 5px 5px rgba(0,0,0,.08)}
 .contact-page .map img{width:100%;height:auto;float:left}
 .contact-page .map iframe{width:100% !important;height:100% !important;margin:0 0 !important;position:absolute;top:0;left:0}
