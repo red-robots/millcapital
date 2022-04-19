@@ -348,13 +348,39 @@ function team_list_shortcode_func( $atts ) {
   return $output;
 }
 
+
+add_shortcode( 'contact_info', 'contact_info_shortcode_func' );
+function contact_info_shortcode_func( $atts ) {
+  // $a = shortcode_atts( array(
+  //   'numcol'=>3
+  // ), $atts );
+
+  $info['address'] = array('icon'=>'fa fa-map-marker','val'=>get_field('address','option'));
+  $info['phone'] = array('icon'=>'fa fa-phone','val'=>get_field('phone','option'));
+  $info['email'] = array('icon'=>'fa fa-envelope','val'=>get_field('email','option'));
+  $output = '';
+  $items = '';
+  foreach($info as $i) {
+    if( $i['val'] ) {
+      $icon = ($i['icon']) ? '<i class="'.$i['icon'].'" aria-hidden="true"></i> ':'';
+      $items .= '<li>'.$icon.$i['val'].'</li>';
+    }
+  }
+  if($items) {
+    $output = '<ul class="contact-data">'.$items.'</ul>';
+  }
+  return $output;
+}
+
+
 /* Disabling Gutenberg on certain templates */
 
 function ea_disable_editor( $id = false ) {
 
   $excluded_templates = array(
     'template-flexible-content.php',
-    'page-clientlogin.php'
+    'page-clientlogin.php',
+    'page-contact.php'
   );
 
   $excluded_ids = array(

@@ -534,7 +534,10 @@ body.home .site-header {
     }
     .inside {
       background: $gray;
-      padding: 60px 5vw 50px 5vw;
+      padding: 60px 30px 50px;
+      @include mid {
+        padding: 65px 5vw 55px;
+      }
     }
   }
   .graphic {
@@ -923,6 +926,11 @@ body.subpage {
     .entry-title {
       background: transparent!important;
     }
+    .entry-content {
+      .wrapper {
+        max-width: 1240px;
+      }
+    }
   }
 }
 
@@ -1072,6 +1080,10 @@ h1.page-title {
   padding-right: 20px;
   position: relative;
   z-index: 10;
+  @include tab {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .wp-block-columns {
   margin: 0 0;
@@ -1566,6 +1578,114 @@ body.subpage.page-template-default {
 .wp-block-image.size-full img {
   width: 100%;
   height: auto;
+}
+
+.contact-page {
+  @include tab {
+    &:before {
+      content:"";
+      display: block;
+      width: 25%;
+      height: 100%;
+      position:absolute;
+      top: 0;
+      right: 0;
+      background: #e5e5e5;
+    }
+    &:after {
+      content:"";
+      display: block;
+      width: 25%;
+      height: 250px;
+      position:absolute;
+      bottom: 0;
+      right: 0;
+      background-image:url('assets/images/symbol-white.svg');
+      background-position: 0 0;
+      background-size: cover;
+      background-repeat:no-repeat;
+      opacity: 0.35;
+    }
+  }
+  #main {
+    position: relative;
+    z-index: 10;
+  }
+  .entry-content {
+    position: relative;
+    .wrapper {
+      padding-top: 30px;
+      padding-bottom: 80px;
+      z-index: 10;
+      @include tab {
+        min-height: 30em;
+        padding-top: 70px;
+        padding-bottom: 150px;
+      }
+    }
+  }
+  .twoCols {
+    h2 {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin:0 0 20px;
+      color: $primary;
+      border-bottom: 2px solid $primary;
+      padding-bottom: 15px;
+      top: -7px;
+      position: relative;
+    }
+    .left-col,
+    .right-col {
+      width: 100%;
+      @include tab {
+        width: 50%;
+      }
+    }
+    .left-col {
+      margin-bottom: 30px;
+      @include tab {
+        margin-bottom: 0;
+        padding-right: 5vw;
+      }
+    }
+  }
+  .contact-data {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+    li {
+      color: $primary;
+      margin: 5px 0;
+      i {
+        display: inline-block;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .map {
+    position: relative;
+    width: 100%;
+    float: left;
+    background: #efeeee;
+    border: 1px solid #e6e6e6;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.08);
+    img {
+      width: 100%;
+      height: auto;
+      float: left;
+    }
+    iframe {
+      width: 100%!important;
+      height: 100%!important;
+      margin: 0 0!important;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 /* FOOTER */
