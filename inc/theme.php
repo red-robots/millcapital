@@ -17,10 +17,9 @@ function remove_wp_logo( $wp_admin_bar ) {
   Custom client login, link and title.
 ---------------------------------------*/
 function my_login_logo() { 
-  // $custom_logo_id = get_theme_mod( 'custom_logo' );
-  // $logoImg = wp_get_attachment_image_src($custom_logo_id,'large');
-  // $logo_url = ($logoImg) ? $logoImg[0] : '';
-  $logo_url = get_template_directory_uri().'/images/logo.png';
+  $custom_logo_id = get_theme_mod( 'custom_logo' );
+  $logoImg = wp_get_attachment_image_src($custom_logo_id,'large');
+  $logo_url = ($logoImg) ? $logoImg[0] : '';
   if($logo_url) { ?>
   <style type="text/css">
     body.login {
@@ -29,8 +28,9 @@ function my_login_logo() {
     body.login div#login h1 a {
       background-image: url(<?php echo $logo_url; ?>);
       background-size: contain;
+      background-position: center;
       width: 100%;
-      height: 100px;
+      height: 60px;
       margin-bottom: 10px;
     }
     .login #backtoblog, .login #nav {
@@ -60,14 +60,14 @@ function my_login_logo() {
       margin-top: 15px;
     }
     body.login.wp-core-ui .button-primary {
-      background: #6aa92f;
-      border-color: #5ba01b;
+      background: #173d6d;
+      border-color: #0b2a52;
       font-weight: bold;
       text-transform: uppercase;
       transition: all ease .3s;
     }
     body.login.wp-core-ui .button-primary:hover {
-      background: #75c529;
+      background: #0e5bbd;
     }
   </style>
 <?php }

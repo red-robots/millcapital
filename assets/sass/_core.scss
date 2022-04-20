@@ -958,7 +958,7 @@ h1.page-title {
   @include flexgroup();
   margin-left: -20px;
   margin-right: -20px;
-  padding-top: 30px;
+  padding-top: 0;
   padding-bottom: 30px;
   .block {
     padding: 20px;
@@ -1914,6 +1914,71 @@ body.single-team {
     background-repeat: no-repeat;
     background-color: transparent;
     opacity: .35;
+  }
+}
+
+/* Sitemap */
+.sitemap-page {
+  #main {
+    min-height: 40em;
+  }
+}
+.sitemap-links {
+  ul {
+    @include tab {
+      max-width: 700px;
+      width: 100%;
+      column-count: 2;
+    }
+    li {
+      margin: 3px 0;
+      @include tab {
+
+      }
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $primary;
+      font-size: 16px;
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+}
+
+
+/* 404 Page not Found */
+body.error404 {
+  #main {
+    min-height: 40em;
+  }
+  .entry-title {
+    background-color: transparent;
+    .small-title {
+      position: relative;
+      font-family: $font_secondary;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: $primary;
+    }
+    .page-title {
+      padding-left: 0;
+      &:before {
+        display: none;
+      }
+    }
+  }
+  .content404 {
+    font-size: 16px;
+    .innerText {
+      border-top: 2px solid $primary;
+      padding-top: 30px;
+    }
+  }
+  #sitemap-wrap {
+    margin-top: 40px;
   }
 }
 
