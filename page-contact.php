@@ -5,7 +5,7 @@
 get_header(); 
 $banner = get_field('header_image');
 ?>
-<div id="primary" class="content-area default-template contact-page">
+<div id="primary" class="content-area default-template contact-page has-sidebar-graphic">
 	<main id="main" class="site-main">
 		<?php while ( have_posts() ) : the_post(); ?>
       <header class="entry-title <?php echo ($banner) ? 'has-banner':'no-banner';?>">

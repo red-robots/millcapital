@@ -9,64 +9,107 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area-full content-default single-team">
-	<main id="main" class="site-main wrapper" role="main">
+<div id="primary" class="content-area-full content-default single-team has-sidebar-graphic">
+	<main id="main" class="site-main has-left-line" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
       <?php  
-      $mainpic = get_field("photo_large");
-      $toptext = get_field("toptext");
-      $top_buttons = get_field("top_buttons");
-      $buttons = array();
-      $top_class = ($mainpic && $toptext) ? 'half':'full';
+      $photo = get_field("photo");
+      $job_title = get_field("jobtitle");
+      $topClass = ($photo && $job_title) ? 'half':'full';
+      $contact_info = get_field('contact_info');
+      $certifications = get_field('certifications');
       ?>
-      <div class="top <?php echo $top_class ?>">
-        <div class="flexwrap">
-          <div class="fcol left animated fadeInLeft">
-            <div class="inner">
+
+      <div class="page-content wrapper">
+        <div class="breadcrumb">
+          <a href="<?php echo get_site_url() ?>/our-team/"><i class="arrow"><span></span></i> Back to Our Team</a>
+        </div>
+            
+        <div class="flexwrap <?php echo $topClass ?>">
+          <div class="leftcol">
+            <header class="entry-header">
               <h1 class="page-title"><?php the_title(); ?></h1>
-              <?php if ($toptext || $top_buttons) { ?>
-                <?php if ($toptext) { ?>
-                <div class="text"><?php echo anti_email_spam($toptext) ?></div>
+              <?php if ($job_title) { ?>
+              <div class="jobtitle"><?php echo $job_title ?></div> 
+              <?php } ?>
+            </header>
+            <div class="entry-content">
+
+              <?php if ($contact_info || $certifications) { ?>
+              <div class="top-group">
+                <?php if ($contact_info) { ?>
+                <div class="contact-info">
+                  <?php foreach ($contact_info as $c) { 
+                    $siteURL = get_site_url();
+                    $title = $c['title'];
+                    $link = $c['link'];
+                    $target = '_self';
+                    $siteParts = parse_url($siteURL);
+                    $host = ( isset($siteParts['host']) && $siteParts['host'] ) ? $siteParts['host'] : '';
+                    if($link) {
+                      $parse = parse_url($link);
+                      if( isset($parse['host']) && $parse['host'] ) {
+                        if (strpos($link, $host) !== false) {
+                          $target = '_self';
+                        } else {
+                          $target = '_blank';
+                        }
+                      }
+                    }
+                  ?>
+                  <div class="info">
+                    <?php if ($link) { ?>
+                      <?php if(filter_var($title, FILTER_VALIDATE_EMAIL)) { ?>
+                        <a href="mailto:<?php echo antispambot($title,1) ?>" target="<?php echo $target ?>"><?php echo antispambot($title) ?></a>
+                      <?php } else { ?>
+                        <a href="<?php echo $link ?>" target="<?php echo $target ?>"><?php echo $title ?></a>
+                      <?php } ?>
+                    <?php } else { ?>
+                    <?php echo $title ?>
+                    <?php } ?>
+                  </div>
+                  <?php } ?>
+                </div>
                 <?php } ?>
-                
-                <?php if ($top_buttons) { ?>
-                <div class="button-group">
-                  <?php foreach ($top_buttons as $b) { 
-                    $btn = $b['button'];
-                    $btnTitle = (isset($btn['title']) && ($btn['title'])) ? ($btn['title']) : '';
-                    $btnLink = (isset($btn['url']) && ($btn['url'])) ? ($btn['url']) : '';
-                    $btnTarget = (isset($btn['target']) && ($btn['target'])) ? ($btn['target']) : '_self';
-                    $style = $b['button_style'];
-                    $btnClass = ($style=='outline') ? 'btn-outline':'btn-green';
-                    if( $btnTitle && $btnLink ) { ?>
-                      <a href="<?php echo $btnLink ?>" target="<?php echo $btnTarget ?>" class="btn <?php echo $btnClass ?>"><?php echo $btnTitle ?></a>
+
+                <?php if ($certifications) { ?>
+                <div class="certifications">
+                  <?php foreach ($certifications as $cert) { 
+                    $cert_title = $cert['heading'];
+                    $cert_info = $cert['info'];
+                    if( $cert_title || $cert_info ) { ?>
+                    <div class="cert-info">
+                      <?php if ($cert_title) { ?>
+                      <h5><?php echo $cert_title ?></h5>
+                      <?php } ?>
+                      <?php if ($cert_info) { ?>
+                      <div class="cert"><?php echo $cert_info ?></div>
+                      <?php } ?>
+                    </div>
                     <?php } ?>
                   <?php } ?>
                 </div>
                 <?php } ?>
+              </div>
+              <?php } ?>
+
+              <?php if ( get_the_content() ) { ?>
+              <div class="bio"><?php the_content(); ?></div> 
               <?php } ?>
             </div>
           </div>
-          <?php if ($mainpic) { ?>
-          <div class="fcol right photo animated fadeInRight">
-            <div class="img" style="background-image:url('<?php echo $mainpic['url'] ?>')">
-              <img src="<?php echo $mainpic['url'] ?>" alt="<?php echo $mainpic['title'] ?>" class="actual-image">
-            </div>
+
+          <?php if ($photo) { ?>
+          <div class="rightcol">
+            <figure class="image">
+              <img src="<?php echo $photo['url'] ?>" alt="<?php echo $photo['title'] ?>">
+            </figure>
           </div>
           <?php } ?>
-        </div>
-      </div>
 
-      <?php $smallpic = get_field("photo"); ?>
-      <div class="entry-content wow fadeIn <?php echo ($smallpic) ? 'haspic':'nopic' ?>">
-        <?php if ($smallpic) { ?>
-          <span class="profpic" style="background-image:url('<?php echo $smallpic['url'] ?>')">
-            <img src="<?php echo get_images_dir('square.png') ?>" alt="">
-          </span>
-        <?php } ?>
-        <?php the_content(); ?>
+        </div>
       </div>
 
 		<?php endwhile; ?>

@@ -48,7 +48,6 @@ function add_query_vars_filter( $vars ) {
 }
 add_filter( 'query_vars', 'add_query_vars_filter' );
 
-
 function shortenText($string, $limit, $break=".", $pad="...") {
   // return with no change if string is shorter than $limit
   if(strlen($string) <= $limit) return $string;
@@ -254,22 +253,6 @@ function get_images_dir($fileName=null) {
 }
 
 
-add_action( 'admin_head', 'admin_head_scripts' );
-function admin_head_scripts() { ?>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo get_bloginfo('template_url') ?>/css/admin.css">
-  <style>
-    [data-name="row10_text"],
-    [data-name="row10_title"],
-    [data-name="row10_image"] {
-      display: none!important;
-    }
-  </style>
-<?php
-}
-
 /* ACF CUSTOM VALUES */
 $gravityFormsSelections = array('gravityForm','global_the_form');
 function acf_load_gravity_form_choices( $field ) {
@@ -417,6 +400,9 @@ function ea_disable_gutenberg( $can_edit, $post_type ) {
     return $can_edit;
 
   if( ea_disable_editor( $_GET['post'] ) )
+    $can_edit = false;
+
+  if( get_post_type($_GET['post'])=='team' )
     $can_edit = false;
 
   return $can_edit;

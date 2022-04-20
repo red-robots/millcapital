@@ -1580,37 +1580,12 @@ body.subpage.page-template-default {
   height: auto;
 }
 
+#main {
+  position: relative;
+  z-index: 10;
+}
+
 .contact-page {
-  @include tab {
-    &:before {
-      content:"";
-      display: block;
-      width: 25%;
-      height: 100%;
-      position:absolute;
-      top: 0;
-      right: 0;
-      background: #e5e5e5;
-    }
-    &:after {
-      content:"";
-      display: block;
-      width: 25%;
-      height: 250px;
-      position:absolute;
-      bottom: 0;
-      right: 0;
-      background-image:url('assets/images/symbol-white.svg');
-      background-position: 0 0;
-      background-size: cover;
-      background-repeat:no-repeat;
-      opacity: 0.35;
-    }
-  }
-  #main {
-    position: relative;
-    z-index: 10;
-  }
   .entry-content {
     position: relative;
     .wrapper {
@@ -1668,6 +1643,7 @@ body.subpage.page-template-default {
       }
     }
   }
+
   .contact-data {
     margin: 0 0;
     padding: 0 20px;
@@ -1704,9 +1680,9 @@ body.subpage.page-template-default {
     position: relative;
     width: 100%;
     float: left;
-    background: #efeeee;
+    background: #F0F3F4;
     border: 1px solid #e6e6e6;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.08);
+    box-shadow: 5px 5px 8px rgba(0,0,0,.08);
     img {
       width: 100%;
       height: auto;
@@ -1720,6 +1696,224 @@ body.subpage.page-template-default {
       top: 0;
       left: 0;
     }
+  }
+}
+
+#main.has-left-line {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  padding-left: 5vw;
+  @include xxl {
+    padding-left: 0;
+  }
+  &:before {
+    content: "";
+    display: block;
+    width: 5vw;
+    height: 25px;
+    background: $primary;
+    position: absolute;
+    top: 87px;
+    left: 0;
+  }
+}
+
+body.single-team {
+  .breadcrumb {
+    position:absolute;
+    top: -60px;
+    left: 20px;
+    a {
+      color: #000;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      padding-left: 30px;
+      i.arrow, i.arrow * {
+        transition: width ease .3s;
+      }
+      i.arrow {
+        display: inline-block;
+        width: 22px;
+        height: 12px;
+        border: 1px solid #000;
+        border-radius: 15px;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        span {
+          display: inline-block;
+          width: 50%;
+          height: 1px;
+          background: #000;
+          position: absolute;
+          top: 50%;
+          left: 60%;
+          transform: translateX(-60%) translateY(-50%);
+          &:before, &:after {
+            content:"";
+            display: block;
+            width: 4px;
+            height: 1px;
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: -2px;
+          }
+          &:before {
+            transform: translateY(-1px) rotate(-45deg);
+          }
+          &:after {
+            transform: translateY(1px) rotate(45deg);
+          }
+        }
+      }
+      &:hover {
+        padding-left: 33px;
+        color: $primary;
+        i.arrow {
+          background: $primary;
+          border-color: $primary;
+          width: 25px;
+          span {
+            width: 60%;
+            background: #FFF;
+            &:before, &:after {
+              background: #FFF;
+            }
+          }
+        }
+      }
+    }
+  }
+  #main.has-left-line {
+    padding-top: 130px;
+    &:before {
+      top: 137px;
+    }
+  }
+  .page-content {
+    position: relative;
+    z-index: 10;
+    .page-title {
+      padding: 0 0;
+      font-size: 2rem;
+      &:before {
+        display: none;
+      }
+    }
+    .entry-header {
+      margin-bottom: 30px;
+      .jobtitle {
+        font-size: 16px;
+      }
+    }
+  }
+  .leftcol, .rightcol {
+    width: 100%;
+  }
+  .leftcol {
+    @include tab {
+      width: 60%;
+      padding-right: 8vw;
+    }
+  }
+  .rightcol {
+    margin-top: 20px;
+    @include tab {
+      width: 40%;
+      margin-top: 0;
+    }
+    figure {
+      width: 100%;
+      margin: 0 0;
+      float: left;
+      box-shadow: 5px 5px 8px rgba(0,0,0,.08);
+      img {
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+    }
+  }
+
+  .top-group {
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid $primary;
+    .contact-info {
+      color: $primary;
+      a {
+        color: $primary;
+        text-decoration: none;
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .certifications {
+    .cert-info {
+      margin: 30px 0;
+    }
+    h5 {
+      font-size: 14px;
+      font-weight: normal;
+      color: $primary;
+      margin: 0 0;
+    }
+    ul {
+      margin: 0 0;
+      padding: 0 0 0 15px;
+      list-style: none;
+      li {
+        position: relative;
+        padding-left: 12px;
+        margin: 2px 0;
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          border-radius: 100px;
+          position: absolute;
+          top: 8px;
+          left: 0;
+          background: #b8b8b8;
+        }
+      }
+    }
+  }
+}
+
+#primary.has-sidebar-graphic {
+  &:before, &:after {
+    content: "";
+    display: none;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    @include tab {
+      width: 35%;
+      display: block;
+    }
+    @include mid {
+      width: 25%;
+      display: block;
+    }
+  }
+  &:before {
+    top: 0;
+    background-color: #e5e5e5;
+  }
+  &:after {
+    bottom: 0;
+    background-image: url('assets/images/symbol-white.svg');
+    background-size: contain;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    opacity: .35;
   }
 }
 

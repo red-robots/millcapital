@@ -112,8 +112,8 @@ function bellaworks_widgets_init() {
 }
 add_action( 'widgets_init', 'bellaworks_widgets_init' );
 
-
-add_action( 'admin_head', 'action_admin_style_2020' );
-function action_admin_style_2020(){ ?>
-  <link rel="stylesheet" type="text/css" href="<?php echo get_bloginfo('template_url') ?>/css/dashicons.min.css">
-<?php }
+function bellaworks_admin_style() {
+  wp_enqueue_style('admin-dashicons', get_template_directory_uri().'/css/dashicons.min.css');
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/css/admin.css');
+}
+add_action('admin_enqueue_scripts', 'bellaworks_admin_style');
