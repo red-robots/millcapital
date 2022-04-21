@@ -28,10 +28,13 @@ pre {
 }
 body {
 	font-family: $font_primary;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.5;
 	color: $color_text_main;
+  @include tab {
+    font-size: 14px;
+  }
 }
 p {
   margin: 0 0 1.3em;
@@ -391,6 +394,8 @@ body.home .site-header {
       display: block;
       width: 100%;
       text-align: center;
+      padding: 10px 0;
+      background: rgba(255,255,255,.85);
     }
   }
   body.logged-in.admin-bar {
@@ -1259,9 +1264,8 @@ body.subpage.page-template-default {
       }
       ul {
         li {
-          font-size: 15px;
           color: $primary;
-          margin:0 0 5px;
+          margin: 8px 0;
         }
       }
     }
@@ -1419,7 +1423,7 @@ body.subpage.page-template-default {
         li {
           font-size: 15px;
           color: $primary;
-          margin:0 0 5px;
+          margin: 8px 0;
         }
       }
     }
@@ -1536,24 +1540,33 @@ body.subpage.page-template-default {
           content: "";
           display: block;
           width: 60%;
-          height: 20px;
+          height: 25px;
           position: absolute;
-          bottom: 0;
+          bottom: -3px;
           background: #FFF;
         }
         &:before {
-          left: -2.3vw;
+          left: -9.5vw;
           transform: skew(46deg);
+          @include tab {
+            left: -10%;
+          }
         }
         &:after {
-          right: -2.3vw;
+          right: -9.5vw;
           transform: skew(-46deg);
+          @include tab {
+            right: -10%
+          }
         }
       }
       .col-text {
         width: 100%;
         float: left;
-        padding: 20px 2vw;
+        padding: 10px 30px 10px;
+        @include tab {
+          padding: 10px 2vw 0;
+        }
       }
       figure {
         margin: 0 0;
@@ -1789,7 +1802,7 @@ body.single-team {
   #main.has-left-line {
     padding-top: 130px;
     &:before {
-      top: 137px;
+      top: 140px;
     }
   }
   .page-content {
@@ -1797,7 +1810,7 @@ body.single-team {
     z-index: 10;
     .page-title {
       padding: 0 0;
-      font-size: 2rem;
+      font-size: 35px;
       &:before {
         display: none;
       }
@@ -1805,7 +1818,7 @@ body.single-team {
     .entry-header {
       margin-bottom: 30px;
       .jobtitle {
-        font-size: 16px;
+        font-size: 18px;
       }
     }
   }
@@ -1813,6 +1826,8 @@ body.single-team {
     width: 100%;
   }
   .leftcol {
+    font-size: 15px;
+    line-height: 1.5;
     @include tab {
       width: 60%;
       padding-right: 8vw;
@@ -1858,7 +1873,7 @@ body.single-team {
     }
     h5 {
       font-size: 14px;
-      font-weight: normal;
+      font-weight: 500;
       color: $primary;
       margin: 0 0;
     }
