@@ -513,6 +513,20 @@ body.home .site-header {
       background: $primary;
     }
   }
+  &.static-slide {
+    .slide-text {
+      .inline {
+        @include animateThis(1s);
+        @include animateEffect(fadeInRight);
+        @include tab {
+          &:after {
+            animation-delay: 3s;
+            animation: vLineEffect 1.3s linear;
+          }
+        }
+      }
+    }
+  }
 }
 
 .home-intro {

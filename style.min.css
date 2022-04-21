@@ -1351,6 +1351,7 @@ body.home .site-header{position:absolute}
 #home-slider .swiper-slide-active .inline{-webkit-animation-name:fadeInRight;animation-name:fadeInRight}
 #home-slider .swiper-pagination-bullet{width:10px;height:10px;border:1px solid #163d6d;opacity:1;background:rgba(255,255,255,.3)}
 #home-slider .swiper-pagination-bullet.swiper-pagination-bullet-active{background:#163d6d}
+#home-slider.static-slide .slide-text .inline{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-name:fadeInRight;animation-name:fadeInRight}
 .home-intro{background:#163d6d}
 .home-intro p{margin:0 0 15px}
 .home-intro .textwrap{color:#000;position:relative;background:#163d6d}
@@ -1585,6 +1586,7 @@ body.error404 #sitemap-wrap{margin-top:40px}
 #home-slider .slide-text .inline{padding-right:3vw}
 #home-slider .slide-text .inline:after{content:"";display:block;width:2px;height:100%;position:absolute;top:0;right:0;-webkit-transition:all ease .3s;transition:all ease .3s;background:#163d6d}
 #home-slider .swiper-slide-active .inline:after{-webkit-animation-delay:2s;animation-delay:2s;-webkit-animation:vLineEffect 1.3s linear;animation:vLineEffect 1.3s linear}
+#home-slider.static-slide .slide-text .inline:after{-webkit-animation-delay:3s;animation-delay:3s;-webkit-animation:vLineEffect 1.3s linear;animation:vLineEffect 1.3s linear}
 .home-intro .hometext{width:73%;padding-left:calc(5% + 20px)}
 .home-intro .graphic{width:27%;opacity:1}
 .home-blocks .block{width:33.33%}
