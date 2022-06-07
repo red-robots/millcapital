@@ -164,7 +164,13 @@ body.home .site-header {
   }
   a.custom-logo-link {
     display: block;
-    width: 250px;
+    width: 220px;
+    position: relative;
+    top: 6px;
+    @include tab {
+      width: 350px;
+      top: 0;
+    }
     img {
       width: 100%;
       height: auto;

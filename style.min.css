@@ -1315,7 +1315,7 @@ a:hover{color:#3788c4}
 body.home .site-header{position:absolute}
 #site-logo{display:inline-block;width:auto}
 #site-logo h1{margin:0;font-size:20px;line-height:1.2}
-#site-logo a.custom-logo-link{display:block;width:250px}
+#site-logo a.custom-logo-link{display:block;width:220px;position:relative;top:6px}
 #site-logo a.custom-logo-link img{width:100%;height:auto}
 #site-navigation{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;position:relative}
 #site-navigation nav{display:block;width:100%}
@@ -1579,6 +1579,7 @@ body.error404 #sitemap-wrap{margin-top:40px}
 .wp-block-column.wide,.wrapper.wide{max-width:90%}
 .site-header .wrapper.wide{padding-left:0;padding-right:0}
 #site-logo{padding-left:5%}
+#site-logo a.custom-logo-link{width:350px;top:0}
 #site-navigation{width:27%;padding-left:20px;padding-right:5%}
 #site-navigation #navigation ul.menu{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
 #site-navigation #navigation ul.menu>li{float:none}
